@@ -1,0 +1,15 @@
+
+backend/var/
+backend/vendor/
+
+
+backend/.env.local
+backend/.env.*.local
+
+
+.idea/
+.vscode/
+
+
+.DS_Store
+Thumbs.db
