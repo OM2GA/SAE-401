@@ -2,6 +2,7 @@
 backend/var/
 backend/vendor/
 
+frontend/node_modules/
 
 backend/.env.local
 backend/.env.*.local
