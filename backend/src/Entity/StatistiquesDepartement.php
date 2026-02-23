@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\StatistiquesDepartementRepository;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: StatistiquesDepartementRepository::class)]
 #[ORM\Table(name: "statistique")]
 class StatistiquesDepartement
-{
+{  
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -21,57 +22,75 @@ class StatistiquesDepartement
     #[ORM\JoinColumn(name: "departement_id", referencedColumnName: "id", nullable: false, onDelete: "CASCADE")]
     private ?Departement $departement = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "nombre_habitants", type: "integer", nullable: true)]
     private ?int $nombreHabitants = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "densite_population", type: "float", nullable: true)]
     private ?float $densitePopulation = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "variation_population", type: "float", nullable: true)]
     private ?float $variationPopulation = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "pourcentage_pop_moins20", type: "float", nullable: true)]
     private ?float $pourcentagePopMoins20 = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "pourcentage_pop_60plus", type: "float", nullable: true)]
     private ?float $pourcentagePop60Plus = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "moyenne_construction_10ans", type: "float", nullable: true)]
     private ?float $moyenneConstruction10Ans = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "taux_logements_vacants_parc_social", type: "float", nullable: true)]
     private ?float $tauxLogementsVacantsParcSocial = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "taux_chomage", type: "float", nullable: true)]
     private ?float $tauxChomage = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "taux_pauvrete", type: "float", nullable: true)]
     private ?float $tauxPauvrete = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "nombre_logements", type: "integer", nullable: true)]
     private ?int $nombreLogements = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "taux_logements_sociaux", type: "float", nullable: true)]
     private ?float $tauxLogementsSociaux = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "taux_logements_vacants", type: "float", nullable: true)]
     private ?float $tauxLogementsVacants = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "construction_neuve", type: "integer", nullable: true)]
     private ?int $constructionNeuve = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "parc_social_nombre_logements", type: "integer", nullable: true)]
     private ?int $parcSocialNombreLogements = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "parc_social_loyer_moyen", type: "float", nullable: true)]
     private ?float $parcSocialLoyerMoyen = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "residences_principales", type: "integer", nullable: true)]
     private ?int $residencesPrincipales = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "taux_logements_individuels", type: "float", nullable: true)]
     private ?float $tauxLogementsIndividuels = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "parc_social_logements_mis_location", type: "integer", nullable: true)]
     private ?int $parcSocialLogementsMisLocation = null;
 
@@ -99,4 +118,94 @@ class StatistiquesDepartement
     public function setResidencesPrincipales(?int $val): self { $this->residencesPrincipales = $val; return $this; }
     public function setTauxLogementsIndividuels(?float $val): self{$this->tauxLogementsIndividuels = $val;return $this;}
     public function setParcSocialLogementsMisLocation(?int $val): self{$this->parcSocialLogementsMisLocation = $val;return $this;}
+
+    public function getNombreHabitants(): ?int
+    {
+        return $this->nombreHabitants;
+    }
+
+    public function getDensitePopulation(): ?float
+    {
+        return $this->densitePopulation;
+    }
+
+    public function getVariationPopulation(): ?float
+    {
+        return $this->variationPopulation;
+    }
+
+    public function getPourcentagePopMoins20(): ?float
+    {
+        return $this->pourcentagePopMoins20;
+    }
+
+    public function getPourcentagePop60Plus(): ?float
+    {
+        return $this->pourcentagePop60Plus;
+    }
+
+    public function getMoyenneConstruction10Ans(): ?float
+    {
+        return $this->moyenneConstruction10Ans;
+    }
+
+    public function getTauxLogementsVacantsParcSocial(): ?float
+    {
+        return $this->tauxLogementsVacantsParcSocial;
+    }
+
+    public function getTauxChomage(): ?float
+    {
+        return $this->tauxChomage;
+    }
+
+    public function getTauxPauvrete(): ?float
+    {
+        return $this->tauxPauvrete;
+    }
+
+    public function getNombreLogements(): ?int
+    {
+        return $this->nombreLogements;
+    }
+
+    public function getTauxLogementsSociaux(): ?float
+    {
+        return $this->tauxLogementsSociaux;
+    }
+
+    public function getTauxLogementsVacants(): ?float
+    {
+        return $this->tauxLogementsVacants;
+    }
+
+    public function getConstructionNeuve(): ?int
+    {
+        return $this->constructionNeuve;
+    }
+
+    public function getParcSocialNombreLogements(): ?int
+    {
+        return $this->parcSocialNombreLogements;
+    }
+
+    public function getParcSocialLoyerMoyen(): ?float
+    {
+        return $this->parcSocialLoyerMoyen;
+    }
+
+    public function getResidencesPrincipales(): ?int
+    {
+        return $this->residencesPrincipales;
+    }
+
+    public function getTauxLogementsIndividuels(): ?float
+    {
+        return $this->tauxLogementsIndividuels;
+    }
+
+    public function getParcSocialLogementsMisLocation(): ?int
+    {
+        return $this->parcSocialLogementsMisLocation;
+    }
 }
