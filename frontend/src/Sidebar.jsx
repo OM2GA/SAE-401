@@ -1,4 +1,5 @@
 import { Children } from "react";
+import {AdjustmentsHorizontalIcon,ArrowPathIcon} from '@heroicons/react/24/outline';
 
 function Sidebar({ children }) {
   return (
@@ -26,17 +27,15 @@ function Sidebar({ children }) {
           
           {/* Header de la sidebar */}
           <div className="p-6 border-b border-gray-100">
-            <h1 className="text-3xl font-black text-red-400 italic">
+            <h1 className="text-3xl font-black text-red-500 italic">
               DataViz
             </h1>
           </div>
 
           {/* Filtres et select */}
           <div className="p-6 grow space-y-6">
-            <div className="flex items-center gap-2 text-gray-400 font-bold text-xs tracking-widest uppercase">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-              </svg>
+            <div className="flex items-center gap-2 text-gray-400 font-bold text-md tracking-widest uppercase">
+              <AdjustmentsHorizontalIcon className="h-6 w-6" />
               Filtres
             </div>
 
@@ -86,7 +85,7 @@ function Sidebar({ children }) {
                 <option className="hover:bg-red-200 rounded-sm">Auvergne-Rhône-Alpes</option>
               </select>
             </fieldset>
-            <button className="btn bg-red-500 hover:bg-red-700 w-full border-none mt-4 text-white font-medium tracking-widest rounded-sm">Actualiser</button>
+            <button className="btn bg-red-500 hover:bg-red-700 w-full border-none mt-4 text-white font-medium tracking-widest rounded-sm"> <ArrowPathIcon className="h-6 w-6" strokeWidth="2"/> Actualiser</button>
           </div>
 
           {/* Footer de la sidebar */}
