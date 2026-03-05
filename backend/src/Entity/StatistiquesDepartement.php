@@ -19,6 +19,7 @@ class StatistiquesDepartement
     private ?int $annee = null;
 
     #[ORM\ManyToOne]
+    #[Groups(['stats:read'])]
     #[ORM\JoinColumn(name: "departement_id", referencedColumnName: "id", nullable: false, onDelete: "CASCADE")]
     private ?Departement $departement = null;
 

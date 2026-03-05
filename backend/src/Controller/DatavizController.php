@@ -24,8 +24,7 @@ class DatavizController extends AbstractController
 
         if (!$stats) {
             return new JsonResponse(
-                ['message' => 'Statistiques introuvables pour ce département et cette année'],
-                404
+                ['message' => 'Statistiques introuvables pour ce département et cette année'],404
             );
         }
 
@@ -33,5 +32,35 @@ class DatavizController extends AbstractController
             $stats,
             context: ['groups' => ['stats:read']]
          );
+    }
+
+    #[Route('/api/stats/region/{nomRegion}/{annee}', methods: ['GET'], name: 'api_stats_region')]
+    public function getStatsRegion(string $nomRegion, int $annee, Request $request, EntityManagerInterface $entityManager): JsonResponse
+    {
+        $region = $entityManager->getRepository(Region::class)->findOneBy(['nomRegion' => $nomRegion]);
+
+        //erreur si la region existe pas
+        if (!$region) {
+            return new JsonResponse(['message' => 'Région introuvable'], 404);
+        }
+        //recuperer tous les departements qui sont dans la region 
+        $departements = $entityManager->getRepository(Departement::class)->findBy(['region' => $region]);
+
+        //recuperer les statistiques de tout les departements de la region
+        $stats = $entityManager->getRepository(StatistiquesDepartement::class)->findBy([
+            'departement' => $departements,
+            'annee' => $annee
+        ]);
+
+        if (!$stats || count($stats) === 0) {
+            return new JsonResponse(
+                ['message' => 'Statistiques introuvables pour cette région et cette année'],404
+            );
+        }
+
+        return $this->json(
+            $stats,
+            context: ['groups' => ['stats:read']]
+        );
     }
 }

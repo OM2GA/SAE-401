@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DepartementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: DepartementRepository::class)]
 #[ORM\Table(name: "departement")]
@@ -17,6 +18,7 @@ class Departement
     #[ORM\Column(name: "code_departement", length: 10)]
     private ?string $codeDepartement = null;
 
+    #[Groups(['stats:read'])]
     #[ORM\Column(name: "nom_departement", length: 100)]
     private ?string $nomDepartement = null;
 
