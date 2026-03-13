@@ -9,7 +9,7 @@ function StatCard(props) {
       <div className="w-1.5 bg-red-600"></div>
 
       <div className="stat p-6">
-        
+
         <div className="stat-figure absolute top-2 right-2">
           <Icon className="size-20 text-gray-300" />
         </div>
