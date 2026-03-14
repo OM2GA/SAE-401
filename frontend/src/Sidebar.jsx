@@ -1,7 +1,8 @@
 import { AdjustmentsHorizontalIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { DataStats } from "./apiCall";
 
-function Sidebar({ children }) {
+function Sidebar({ children, onDataChange, onDepartementChange }) {
 
   const [annee, setAnnee] = useState('default');
   const [regionChoisi, setRegionChoisi] = useState('default');
@@ -9,180 +10,189 @@ function Sidebar({ children }) {
 
   const hoveroption = "hover:bg-red-200 rounded-sm";
 
-  // Cette fonction gère l'affichage des départements avec un switch
+  useEffect(() => {
+    const chargerDonnees = async () => {
+      if (annee !== "default" && regionChoisi !== "default") {
+        const data = await DataStats(regionChoisi, annee);
+        onDataChange(data);
+      }
+    };
+
+    chargerDonnees();
+  }, [annee, regionChoisi, onDataChange]);
+
+  // Affichage des départements par region avec un switch pour les select
   const afficherOptionsDepartement = () => {
     switch (regionChoisi) {
       case "Auvergne-Rhône-Alpes":
         return (
           <>
-            <option className={hoveroption}>Ain (01)</option>
-            <option className={hoveroption}>Allier (03)</option>
-            <option className={hoveroption}>Ardèche (07)</option>
-            <option className={hoveroption}>Cantal (15)</option>
-            <option className={hoveroption}>Drôme (26)</option>
-            <option className={hoveroption}>Isère (38)</option>
-            <option className={hoveroption}>Loire (42)</option>
-            <option className={hoveroption}>Haute-Loire (43)</option>
-            <option className={hoveroption}>Puy-de-Dôme (63)</option>
-            <option className={hoveroption}>Rhône (69)</option>
-            <option className={hoveroption}>Savoie (73)</option>
-            <option className={hoveroption}>Haute-Savoie (74)</option>
+            <option value="Ain"className={hoveroption}>Ain (01)</option>
+            <option value="Allier" className={hoveroption}>Allier (03)</option>
+            <option value="Ardèche" className={hoveroption}>Ardèche (07)</option>
+            <option value="Cantal" className={hoveroption}>Cantal (15)</option>
+            <option value="Drôme " className={hoveroption}>Drôme (26)</option>
+            <option value="Isère" className={hoveroption}>Isère (38)</option>
+            <option value="Loire" className={hoveroption}>Loire (42)</option>
+            <option value="Haute-Loire" className={hoveroption}>Haute-Loire (43)</option>
+            <option value="Puy-de-Dôme" className={hoveroption}>Puy-de-Dôme (63)</option>
+            <option value="Rhône" className={hoveroption}>Rhône (69)</option>
+            <option value="Savoie" className={hoveroption}>Savoie (73)</option>
+            <option value="Haute-Savoie" className={hoveroption}>Haute-Savoie (74)</option>
           </>
         );
       case "Bourgogne-Franche-Comté":
         return (
           <>
-            <option className={hoveroption}>Côte-d'Or (21)</option>
-            <option className={hoveroption}>Doubs (25)</option>
-            <option className={hoveroption}>Jura (39)</option>
-            <option className={hoveroption}>Nièvre (58)</option>
-            <option className={hoveroption}>Haute-Saône (70)</option>
-            <option className={hoveroption}>Saône-et-Loire (71)</option>
-            <option className={hoveroption}>Yonne (89)</option>
-            <option className={hoveroption}>Territoire de Belfort (90)</option>
+            <option value="Côte-d'Or" className={hoveroption}>Côte-d'Or (21)</option>
+            <option value="Doubs" className={hoveroption}>Doubs (25)</option>
+            <option value="Jura" className={hoveroption}>Jura (39)</option>
+            <option value="Nièvre" className={hoveroption}>Nièvre (58)</option>
+            <option value="Haute-Saône" className={hoveroption}>Haute-Saône (70)</option>
+            <option value="Saône-et-Loire" className={hoveroption}>Saône-et-Loire (71)</option>
+            <option value="Yonne" className={hoveroption}>Yonne (89)</option>
+            <option value="Territoire de Belfort" className={hoveroption}>Territoire de Belfort (90)</option>
           </>
         );
       case "Bretagne":
         return (
           <>
-            <option className={hoveroption}>Côtes-d'Armor (22)</option>
-            <option className={hoveroption}>Finistère (29)</option>
-            <option className={hoveroption}>Ille-et-Vilaine (35)</option>
-            <option className={hoveroption}>Morbihan (56)</option>
+            <option value="Côtes-d'Armor" className={hoveroption}>Côtes-d'Armor (22)</option>
+            <option value="Finistère" className={hoveroption}>Finistère (29)</option>
+            <option value="Ille-et-Vilaine" className={hoveroption}>Ille-et-Vilaine (35)</option>
+            <option value="Morbihan" className={hoveroption}>Morbihan (56)</option>
           </>
         );
       case "Centre-Val de Loire":
         return (
           <>
-            <option className={hoveroption}>Cher (18)</option>
-            <option className={hoveroption}>Eure-et-Loir (28)</option>
-            <option className={hoveroption}>Indre (36)</option>
-            <option className={hoveroption}>Indre-et-Loire (37)</option>
-            <option className={hoveroption}>Loir-et-Cher (41)</option>
-            <option className={hoveroption}>Loiret (45)</option>
+            <option value="Cher" className={hoveroption}>Cher (18)</option>
+            <option value="Eure-et-Loir" className={hoveroption}>Eure-et-Loir (28)</option>
+            <option value="Indre" className={hoveroption}>Indre (36)</option>
+            <option value="Indre-et-Loire" className={hoveroption}>Indre-et-Loire (37)</option>
+            <option value="Loir-et-Cher" className={hoveroption}>Loir-et-Cher (41)</option>
+            <option value="Loiret" className={hoveroption}>Loiret (45)</option>value="" 
           </>
         );
       case "Corse":
         return (
           <>
-            <option className={hoveroption}>Corse-du-Sud (2A)</option>
-            <option className={hoveroption}>Haute-Corse (2B)</option>
+            <option value="Corse-du-Sud" className={hoveroption}>Corse-du-Sud (2A)</option>
+            <option value="Haute-Corse" className={hoveroption}>Haute-Corse (2B)</option>
           </>
         );
       case "Grand Est":
         return (
           <>
-            <option className={hoveroption}>Ardennes (08)</option>
-            <option className={hoveroption}>Aube (10)</option>
-            <option className={hoveroption}>Bas-Rhin (67)</option>
-            <option className={hoveroption}>Haut-Rhin (68)</option>
-            <option className={hoveroption}>Haute-Marne (52)</option>
-            <option className={hoveroption}>Marne (51)</option>
-            <option className={hoveroption}>Meurthe-et-Moselle (54)</option>
-            <option className={hoveroption}>Meuse (55)</option>
-            <option className={hoveroption}>Moselle (57)</option>
-            <option className={hoveroption}>Vosges (88)</option>
+            <option value="Ardennes" className={hoveroption}>Ardennes (08)</option>
+            <option value="Aube" className={hoveroption}>Aube (10)</option>
+            <option value="Bas-Rhin" className={hoveroption}>Bas-Rhin (67)</option>
+            <option value="Haut-Rhin" className={hoveroption}>Haut-Rhin (68)</option>
+            <option value="Haute-Marne" className={hoveroption}>Haute-Marne (52)</option>
+            <option value="Marne" className={hoveroption}>Marne (51)</option>
+            <option value="Meurthe-et-Moselle" className={hoveroption}>Meurthe-et-Moselle (54)</option>
+            <option value="Meuse" className={hoveroption}>Meuse (55)</option>
+            <option value="Moselle" className={hoveroption}>Moselle (57)</option>
+            <option value="Vosges" className={hoveroption}>Vosges (88)</option>
           </>
         );
       case "Hauts-de-France":
         return (
           <>
-            <option className={hoveroption}>Aisne (02)</option>
-            <option className={hoveroption}>Nord (59)</option>
-            <option className={hoveroption}>Oise (60)</option>
-            <option className={hoveroption}>Pas-de-Calais (62)</option>
-            <option className={hoveroption}>Somme (80)</option>
+            <option value="Aisne" className={hoveroption}>Aisne (02)</option>
+            <option value="Nord" className={hoveroption}>Nord (59)</option>
+            <option value="Oise" className={hoveroption}>Oise (60)</option>
+            <option value="Pas-de-Calais" className={hoveroption}>Pas-de-Calais (62)</option>
+            <option value="Somme" className={hoveroption}>Somme (80)</option>
           </>
         );
       case "Île-de-France":
         return (
           <>
-            <option className={hoveroption}>Paris (75)</option>
-            <option className={hoveroption}>Seine-et-Marne (77)</option>
-            <option className={hoveroption}>Yvelines (78)</option>
-            <option className={hoveroption}>Essonne (91)</option>
-            <option className={hoveroption}>Hauts-de-Seine (92)</option>
-            <option className={hoveroption}>Seine-Saint-Denis (93)</option>
-            <option className={hoveroption}>Val-de-Marne (94)</option>
-            <option className={hoveroption}>Val-d'Oise (95)</option>
+            <option value="Paris" className={hoveroption}>Paris (75)</option>
+            <option value="Seine-et-Marne" className={hoveroption}>Seine-et-Marne (77)</option>
+            <option value="Yvelines" className={hoveroption}>Yvelines (78)</option>
+            <option value="Essonne" className={hoveroption}>Essonne (91)</option>
+            <option value="Hauts-de-Seine" className={hoveroption}>Hauts-de-Seine (92)</option>
+            <option value="Seine-Saint-Denis" className={hoveroption}>Seine-Saint-Denis (93)</option>
+            <option value="Val-de-Marne" className={hoveroption}>Val-de-Marne (94)</option>
+            <option value="Val-d'Oise" className={hoveroption}>Val-d'Oise (95)</option>
           </>
         );
       case "Normandie":
         return (
           <>
-            <option className={hoveroption}>Calvados (14)</option>
-            <option className={hoveroption}>Eure (27)</option>
-            <option className={hoveroption}>Manche (50)</option>
-            <option className={hoveroption}>Orne (61)</option>
-            <option className={hoveroption}>Seine-Maritime (76)</option>
+            <option value="Calvados" className={hoveroption}>Calvados (14)</option>
+            <option value="Eure" className={hoveroption}>Eure (27)</option>
+            <option value="Manche" className={hoveroption}>Manche (50)</option>
+            <option value="Orne" className={hoveroption}>Orne (61)</option>
+            <option value="Seine-Maritime" className={hoveroption}>Seine-Maritime (76)</option>
           </>
         );
-      case "Nouvelle-Aquitaine":
+      case "Nouvelle-Aquitaine":value="" 
         return (
           <>
-            <option className={hoveroption}>Charente (16)</option>
-            <option className={hoveroption}>Charente-Maritime (17)</option>
-            <option className={hoveroption}>Corrèze (19)</option>
-            <option className={hoveroption}>Creuse (23)</option>
-            <option className={hoveroption}>Dordogne (24)</option>
-            <option className={hoveroption}>Gironde (33)</option>
-            <option className={hoveroption}>Landes (40)</option>
-            <option className={hoveroption}>Lot-et-Garonne (47)</option>
-            <option className={hoveroption}>Pyrénées-Atlantiques (64)</option>
-            <option className={hoveroption}>Deux-Sèvres (79)</option>
-            <option className={hoveroption}>Vienne (86)</option>
-            <option className={hoveroption}>Haute-Vienne (87)</option>
+            <option value="Charente" className={hoveroption}>Charente (16)</option>
+            <option value="Charente-Maritime" className={hoveroption}>Charente-Maritime (17)</option>
+            <option value="Corrèze" className={hoveroption}>Corrèze (19)</option>
+            <option value="Creuse" className={hoveroption}>Creuse (23)</option>
+            <option value="Dordogne" className={hoveroption}>Dordogne (24)</option>
+            <option value="Gironde" className={hoveroption}>Gironde (33)</option>
+            <option value="Landes" className={hoveroption}>Landes (40)</option>
+            <option value="Lot-et-Garonne" className={hoveroption}>Lot-et-Garonne (47)</option>
+            <option value="Pyrénées-Atlantiques" className={hoveroption}>Pyrénées-Atlantiques (64)</option>
+            <option value="Deux-Sèvres" className={hoveroption}>Deux-Sèvres (79)</option>
+            <option value="Vienne" className={hoveroption}>Vienne (86)</option>
+            <option value="Haute-Vienne" className={hoveroption}>Haute-Vienne (87)</option>
           </>
         );
       case "Occitanie":
         return (
           <>
-            <option className={hoveroption}>Ariège (09)</option>
-            <option className={hoveroption}>Aude (11)</option>
-            <option className={hoveroption}>Aveyron (12)</option>
-            <option className={hoveroption}>Gard (30)</option>
-            <option className={hoveroption}>Haute-Garonne (31)</option>
-            <option className={hoveroption}>Gers (32)</option>
-            <option className={hoveroption}>Hérault (34)</option>
-            <option className={hoveroption}>Lot (46)</option>
-            <option className={hoveroption}>Lozère (48)</option>
-            <option className={hoveroption}>Hautes-Pyrénées (65)</option>
-            <option className={hoveroption}>Pyrénées-Orientales (66)</option>
-            <option className={hoveroption}>Tarn (81)</option>
-            <option className={hoveroption}>Tarn-et-Garonne (82)</option>
+            <option value="Ariège" className={hoveroption}>Ariège (09)</option>
+            <option value="Aude" className={hoveroption}>Aude (11)</option>
+            <option value="Aveyron" className={hoveroption}>Aveyron (12)</option>
+            <option value="Gard" className={hoveroption}>Gard (30)</option>
+            <option value="Haute-Garonne" className={hoveroption}>Haute-Garonne (31)</option>
+            <option value="Gers" className={hoveroption}>Gers (32)</option>
+            <option value="Hérault" className={hoveroption}>Hérault (34)</option>
+            <option value="Lot" className={hoveroption}>Lot (46)</option>
+            <option value="Lozère" className={hoveroption}>Lozère (48)</option>
+            <option value="Hautes-Pyrénées" className={hoveroption}>Hautes-Pyrénées (65)</option>
+            <option value="Pyrénées-Orientales" className={hoveroption}>Pyrénées-Orientales (66)</option>
+            <option value="Tarn" className={hoveroption}>Tarn (81)</option>
+            <option value="Tarn-et-Garonne" className={hoveroption}>Tarn-et-Garonne (82)</option>
           </>
-        );
+        );value="" 
       case "Pays de la Loire":
         return (
           <>
-            <option className={hoveroption}>Loire-Atlantique (44)</option>
-            <option className={hoveroption}>Maine-et-Loire (49)</option>
-            <option className={hoveroption}>Mayenne (53)</option>
-            <option className={hoveroption}>Sarthe (72)</option>
-            <option className={hoveroption}>Vendée (85)</option>
+            <option value="Loire-Atlantique" className={hoveroption}>Loire-Atlantique (44)</option>
+            <option value="Maine-et-Loire" className={hoveroption}>Maine-et-Loire (49)</option>
+            <option value="Mayenne" className={hoveroption}>Mayenne (53)</option>
+            <option value="Sarthe" className={hoveroption}>Sarthe (72)</option>
+            <option value="Vendée" className={hoveroption}>Vendée (85)</option>
           </>
         );
       case "Provence-Alpes-Côte d'Azur":
         return (
           <>
-            <option className={hoveroption}>Alpes-de-Haute-Provence (04)</option>
-            <option className={hoveroption}>Hautes-Alpes (05)</option>
-            <option className={hoveroption}>Alpes-Maritimes (06)</option>
-            <option className={hoveroption}>Bouches-du-Rhône (13)</option>
-            <option className={hoveroption}>Var (83)</option>
-            <option className={hoveroption}>Vaucluse (84)</option>
+            <option value="Alpes-de-Haute-Provence" className={hoveroption}>Alpes-de-Haute-Provence (04)</option>
+            <option value="Hautes-Alpes" className={hoveroption}>Hautes-Alpes (05)</option>
+            <option value="Alpes-Maritimes" className={hoveroption}>Alpes-Maritimes (06)</option>
+            <option value="Bouches-du-Rhône" className={hoveroption}>Bouches-du-Rhône (13)</option>
+            <option value="Var" className={hoveroption}>Var (83)</option>
+            <option value="Vaucluse" className={hoveroption}>Vaucluse (84)</option>
           </>
         );
       case "Guadeloupe":
-        return <option className={hoveroption}>Guadeloupe (971)</option>;
+        return <option value="Guadeloupe" className={hoveroption}>Guadeloupe (971)</option>;
       case "Martinique":
-        return <option className={hoveroption}>Martinique (972)</option>;
+        return <option value="Martinique" className={hoveroption}>Martinique (972)</option>;
       case "Guyane":
-        return <option className={hoveroption}>Guyane (973)</option>;
+        return <option value="Guyane" className={hoveroption}>Guyane (973)</option>;
       case "La Réunion":
-        return <option className={hoveroption}>La Réunion (974)</option>;
-      case "Mayotte":
-        return <option className={hoveroption}>Mayotte (976)</option>;
+        return <option value="La Réunion" className={hoveroption}>La Réunion (974)</option>;
       default:
         return null;
     }
@@ -230,7 +240,9 @@ function Sidebar({ children }) {
               <legend className="fieldset-legend text-gray-600 font-semibold text-sm mb-1">Année</legend>
               <select className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md" 
                 value={annee}
-                onChange={(e) => {setAnnee(e.target.value);}}
+                onChange={(e) => {
+                  setAnnee(e.target.value);
+                }}
               >
                 <option value="default" disabled={true}>Selectionner une année</option>
                 <option value="2021" className={hoveroption}>2021</option>
@@ -248,6 +260,7 @@ function Sidebar({ children }) {
                 onChange={(e) => {
                   setRegionChoisi(e.target.value);
                   setDepartementChoisi('default'); 
+
                 }}
                 disabled={annee === "default"}
               >
@@ -269,7 +282,6 @@ function Sidebar({ children }) {
                 <option value="Martinique" className={hoveroption}>Martinique</option>
                 <option value="Guyane" className={hoveroption}>Guyane</option>
                 <option value="La Réunion" className={hoveroption}>La Réunion</option>
-                <option value="Mayotte" className={hoveroption}>Mayotte</option>
               </select>
             </fieldset>
 
@@ -279,14 +291,19 @@ function Sidebar({ children }) {
               <select
                 className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md"
                 value={departementChoisi}
-                onChange={(e) => setDepartementChoisi(e.target.value)}
+                onChange={(e) => {
+                  setDepartementChoisi(e.target.value);
+                  onDepartementChange(e.target.value);
+                }}
                 disabled={regionChoisi === "default"}
               >
                 <option value="default" disabled={true}>Selectionner un département</option>
                 {afficherOptionsDepartement()}
               </select>
             </fieldset>
+
             <button className="btn bg-red-500 hover:bg-red-700 w-full border-none mt-4 text-white font-medium tracking-widest rounded-sm"> <ArrowPathIcon className="h-6 w-6" strokeWidth="2" /> Actualiser</button>
+
           </div>
 
           {/* Footer de la sidebar */}
