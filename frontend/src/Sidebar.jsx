@@ -1,18 +1,17 @@
-import { Children } from "react";
 import { AdjustmentsHorizontalIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useState } from "react";
 
 function Sidebar({ children }) {
 
   const [annee, setAnnee] = useState('default');
-  const [regionChoisie, setRegionChoisie] = useState('default');
+  const [regionChoisi, setRegionChoisi] = useState('default');
   const [departementChoisi, setDepartementChoisi] = useState('default');
 
   const hoveroption = "hover:bg-red-200 rounded-sm";
 
   // Cette fonction gère l'affichage des départements avec un switch
   const afficherOptionsDepartement = () => {
-    switch (regionChoisie) {
+    switch (regionChoisi) {
       case "Auvergne-Rhône-Alpes":
         return (
           <>
@@ -229,23 +228,28 @@ function Sidebar({ children }) {
             {/* Année */}
             <fieldset className="fieldset">
               <legend className="fieldset-legend text-gray-600 font-semibold text-sm mb-1">Année</legend>
-              <select className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md" defaultValue="default">
+              <select className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md" 
+                value={annee}
+                onChange={(e) => {setAnnee(e.target.value);}}
+              >
                 <option value="default" disabled={true}>Selectionner une année</option>
-                <option className={hoveroption}>2021</option>
-                <option className={hoveroption}>2022</option>
-                <option className={hoveroption}>2023</option>
+                <option value="2021" className={hoveroption}>2021</option>
+                <option value="2022" className={hoveroption}>2022</option>
+                <option value="2023" className={hoveroption}>2023</option>
               </select>
             </fieldset>
+            
             {/* Région */}
             <fieldset className="fieldset">
               <legend className="fieldset-legend text-gray-600 font-semibold text-sm mb-1">Région</legend>
               <select
                 className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md"
-                value={regionChoisie}
+                value={regionChoisi}
                 onChange={(e) => {
-                  setRegionChoisie(e.target.value);
-                  setDepartementChoisi('default'); // On réinitialise le département
+                  setRegionChoisi(e.target.value);
+                  setDepartementChoisi('default'); 
                 }}
+                disabled={annee === "default"}
               >
                 <option value="default" disabled={true}>Selectionner une région</option>
                 <option value="Auvergne-Rhône-Alpes" className={hoveroption}>Auvergne-Rhône-Alpes</option>
@@ -276,7 +280,7 @@ function Sidebar({ children }) {
                 className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md"
                 value={departementChoisi}
                 onChange={(e) => setDepartementChoisi(e.target.value)}
-                disabled={regionChoisie === "default"}
+                disabled={regionChoisi === "default"}
               >
                 <option value="default" disabled={true}>Selectionner un département</option>
                 {afficherOptionsDepartement()}
