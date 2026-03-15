@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 
 function ChartpopAge({ data,departementChoisi }) {
+const graph = useRef(null)
+
 useEffect(() => {
     if (!data || data.length === 0) return;
     if (!departementChoisi || departementChoisi === "default") return;
@@ -16,8 +18,8 @@ useEffect(() => {
 
     const ctx = chart.getContext("2d");
 
-    if (chart.chartInstance) {
-      chart.chartInstance.destroy();
+    if (graph.current) {
+      graph.current.destroy();
     }
 
     const moins20 = departementData.pourcentagePopMoins20;
@@ -25,7 +27,7 @@ useEffect(() => {
 
     const entre20et60 = 100 - moins20 - plus60;
 
-    chart.chartInstance = new Chart(ctx, {
+    graph.current = new Chart(ctx, {
       type: "bar",
       data: {
         labels: ["Moins de 20 ans", "20 à 60 ans", "60 ans et plus"],
@@ -67,7 +69,7 @@ useEffect(() => {
 
   return (
     <div>
-        <div style={{ width: "900px" }}>
+        <div style={{ width: "500px" }}>
             <h2 className="text-2xl font-bold text-center">Répartition de la population par âge (%)</h2>
             <canvas id="chart1" height="350"></canvas>
         </div>

@@ -71,7 +71,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
             <option value="Indre" className={hoveroption}>Indre (36)</option>
             <option value="Indre-et-Loire" className={hoveroption}>Indre-et-Loire (37)</option>
             <option value="Loir-et-Cher" className={hoveroption}>Loir-et-Cher (41)</option>
-            <option value="Loiret" className={hoveroption}>Loiret (45)</option>value="" 
+            <option value="Loiret" className={hoveroption}>Loiret (45)</option>
           </>
         );
       case "Corse":
@@ -129,7 +129,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
             <option value="Seine-Maritime" className={hoveroption}>Seine-Maritime (76)</option>
           </>
         );
-      case "Nouvelle-Aquitaine":value="" 
+      case "Nouvelle-Aquitaine":
         return (
           <>
             <option value="Charente" className={hoveroption}>Charente (16)</option>
@@ -163,7 +163,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
             <option value="Tarn" className={hoveroption}>Tarn (81)</option>
             <option value="Tarn-et-Garonne" className={hoveroption}>Tarn-et-Garonne (82)</option>
           </>
-        );value="" 
+        );
       case "Pays de la Loire":
         return (
           <>
