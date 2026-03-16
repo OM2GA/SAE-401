@@ -301,9 +301,6 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
                 {afficherOptionsDepartement()}
               </select>
             </fieldset>
-
-            <button className="btn bg-red-500 hover:bg-red-700 w-full border-none mt-4 text-white font-medium tracking-widest rounded-sm"> <ArrowPathIcon className="h-6 w-6" strokeWidth="2" /> Actualiser</button>
-
           </div>
 
           {/* Footer de la sidebar */}
