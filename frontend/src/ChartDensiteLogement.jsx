@@ -5,7 +5,6 @@ const graph = useRef(null)
 
 useEffect(() => {
     if (!data || data.length === 0) return;
-    if (!departementChoisi || departementChoisi === "default") return;
 
     const chart = document.getElementById("ChartBubble");
     if (!chart) return;
@@ -25,7 +24,8 @@ useEffect(() => {
             {
               x: item.densitePopulation,
               y: item.nombreLogements,
-              r: item.parcSocialNombreLogements / 1000 < 5 ? 5 : item.parcSocialNombreLogements / 1000 // rayon avec taille proportionnelle au nombre de logements sociaux mais jamais inferieur a 5
+              r: item.parcSocialNombreLogements / 1000 < 5 ? 5: item.parcSocialNombreLogements / 1000 > 25 ? 25: item.parcSocialNombreLogements / 1000 ,// rayon avec taille proportionnelle au nombre de logements sociaux mais jamais inferieur a 5 et superieur a 25
+              logementsSociaux: item.parcSocialNombreLogements
             }
           ],
           backgroundColor:item.departement.nomDepartement === departementChoisi? "#FF4C4C" : "#36A2EB"}))
@@ -39,7 +39,7 @@ useEffect(() => {
           tooltip: {
             callbacks: {
               label: (context) => {
-                return `${context.dataset.label} - Densité: ${context.raw.x}, Logements: ${context.raw.y}, Logements sociaux: ${Math.round(context.raw.r * 1000)}`;
+                return `${context.dataset.label} - Densité: ${context.raw.x}, Logements: ${context.raw.y}, Logements sociaux: ${context.raw.logementsSociaux}`;
               }
             }
           }
