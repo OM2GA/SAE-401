@@ -69,7 +69,7 @@ useEffect(() => {
 
   return (
     <div>
-        <div style={{ width: "500px" }}>
+        <div className="mb-10" style={{ width: "500px" }}>
             <h2 className="text-2xl font-bold text-center">Répartition de la population par âge (%)</h2>
             <canvas id="chart1" height="350"></canvas>
         </div>

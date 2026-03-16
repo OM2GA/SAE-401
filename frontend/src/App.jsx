@@ -6,6 +6,7 @@ import Titre from './Titre';
 import Stats from './stats';
 import ChartpopAge from './ChartPopAge';
 import ChartChomage from './ChartChomage';
+import ChartDensiteLogement from './ChartDensiteLogement';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Apitest data={data} />
         <ChartpopAge data={data} departementChoisi={departementChoisi}/>
         <ChartChomage data={data} departementChoisi={departementChoisi}/>
+        <ChartDensiteLogement data={data} departementChoisi={departementChoisi}/>
       </Sidebar>
     </>
   )

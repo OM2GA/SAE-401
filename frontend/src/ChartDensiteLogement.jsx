@@ -1,0 +1,76 @@
+import { useEffect,useRef } from "react";
+
+function ChartDensiteLogement({ data, departementChoisi }) {
+const graph = useRef(null)
+
+useEffect(() => {
+    if (!data || data.length === 0) return;
+    if (!departementChoisi || departementChoisi === "default") return;
+
+    const chart = document.getElementById("ChartBubble");
+    if (!chart) return;
+
+    const ctx = chart.getContext("2d");
+
+    if (graph.current) {
+      graph.current.destroy();
+    }
+
+    graph.current = new Chart(ctx, {
+      type: "bubble",
+      data: {
+        datasets: data.map((item) => ({
+          label: item.departement.nomDepartement,
+          data: [
+            {
+              x: item.densitePopulation,
+              y: item.nombreLogements,
+              r: item.parcSocialNombreLogements / 1000 < 5 ? 5 : item.parcSocialNombreLogements / 1000 // rayon avec taille proportionnelle au nombre de logements sociaux mais jamais inferieur a 5
+            }
+          ],
+          backgroundColor:item.departement.nomDepartement === departementChoisi? "#FF4C4C" : "#36A2EB"}))
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: (context) => {
+                return `${context.dataset.label} - Densité: ${context.raw.x}, Logements: ${context.raw.y}, Logements sociaux: ${Math.round(context.raw.r * 1000)}`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Densité de population"
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Nombre de logements"
+            }
+          }
+        }
+      }
+    });
+  }, [data, departementChoisi]);
+      
+
+  return (
+    <div>
+        <div className="mb-10" style={{ width: "700px" }}>
+            <h2 className="text-2xl font-bold">Logement</h2>
+            <canvas id="ChartBubble"></canvas>
+        </div>
+    </div>
+  );
+}
+
+export default ChartDensiteLogement;
