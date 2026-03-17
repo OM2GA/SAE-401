@@ -33,7 +33,7 @@ function App() {
             </div>
           </div>
         ) : (
-          <div className="mt-10 space-y-12">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             <ChartpopAge data={data} departementChoisi={departementChoisi} />
             <ChartChomage data={data} departementChoisi={departementChoisi} />
             <ChartDensiteLogement data={data} departementChoisi={departementChoisi} />

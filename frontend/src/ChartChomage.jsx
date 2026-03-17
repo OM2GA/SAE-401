@@ -66,8 +66,8 @@ function ChartChomage({ data, departementChoisi }) {
   }, [data, departementChoisi]);
 
   return (
-    <div className="mb-10" style={{ width: "700px",}}>
-      <h2 className="text-2xl font-bold">Relation entre chômage et pauvreté</h2>
+    <div className="mb-10">
+      <h2 className="text-2xl font-bold mb-4">Relation entre chômage et pauvreté</h2>
       <canvas id="scatterChart"></canvas>
     </div>
   );

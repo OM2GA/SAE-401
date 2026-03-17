@@ -1,9 +1,9 @@
-import { useEffect,useRef } from "react";
+import { useEffect, useRef } from "react";
 
 function ChartDensiteLogement({ data, departementChoisi }) {
-const graph = useRef(null)
+  const graph = useRef(null)
 
-useEffect(() => {
+  useEffect(() => {
     if (!data || data.length === 0) return;
 
     const chart = document.getElementById("ChartBubble");
@@ -24,11 +24,12 @@ useEffect(() => {
             {
               x: item.densitePopulation,
               y: item.nombreLogements,
-              r: item.parcSocialNombreLogements / 1000 < 5 ? 5: item.parcSocialNombreLogements / 1000 > 25 ? 25: item.parcSocialNombreLogements / 1000 ,// rayon avec taille proportionnelle au nombre de logements sociaux mais jamais inferieur a 5 et superieur a 25
+              r: item.parcSocialNombreLogements / 1000 < 5 ? 5 : item.parcSocialNombreLogements / 1000 > 25 ? 25 : item.parcSocialNombreLogements / 1000,// rayon avec taille proportionnelle au nombre de logements sociaux mais jamais inferieur a 5 et superieur a 25
               logementsSociaux: item.parcSocialNombreLogements
             }
           ],
-          backgroundColor: item.departement.nomDepartement === departementChoisi ? "rgba(220, 38, 38, 0.9)" : "rgba(252, 165, 165, 0.5)"}))
+          backgroundColor: item.departement.nomDepartement === departementChoisi ? "rgba(220, 38, 38, 0.9)" : "rgba(252, 165, 165, 0.5)"
+        }))
       },
       options: {
         responsive: true,
@@ -61,14 +62,12 @@ useEffect(() => {
       }
     });
   }, [data, departementChoisi]);
-      
+
 
   return (
-    <div>
-        <div className="mb-10" style={{ width: "700px" }}>
-            <h2 className="text-2xl font-bold">Logement</h2>
-            <canvas id="ChartBubble"></canvas>
-        </div>
+    <div className="mb-10">
+      <h2 className="text-2xl font-bold mb-4">Logement</h2>
+      <canvas id="ChartBubble"></canvas>
     </div>
   );
 }
