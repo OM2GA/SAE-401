@@ -1,9 +1,9 @@
-import { useEffect,useRef } from "react";
+import { useEffect, useRef } from "react";
 
-function ChartpopAge({ data,departementChoisi }) {
-const graph = useRef(null)
+function ChartpopAge({ data, departementChoisi }) {
+  const graph = useRef(null)
 
-useEffect(() => {
+  useEffect(() => {
     if (!data || data.length === 0) return;
     if (!departementChoisi || departementChoisi === "default") return;
 
@@ -28,18 +28,17 @@ useEffect(() => {
     const entre20et60 = 100 - moins20 - plus60;
 
     graph.current = new Chart(ctx, {
-      type: "bar",
+      type: "doughnut",
       data: {
         labels: ["Moins de 20 ans", "20 à 60 ans", "60 ans et plus"],
         datasets: [
           {
             label: departementChoisi,
             data: [moins20, entre20et60, plus60],
-            backgroundColor: ["#9ecae1", "#3182bd", "#b2df8a"],
-            borderColor: ["#4a4a4a", "#4a4a4a", "#4a4a4a"],
-            borderWidth: 0.5,
-            categoryPercentage: 1,
-            barPercentage: 0.5,
+            backgroundColor: ["#fca5a5", "#ef4444", "#b91c1c"],
+            borderColor: "#ffffff",
+            borderWidth: 2,
+            hoverOffset: 4,
           }
         ]
       },
@@ -47,32 +46,21 @@ useEffect(() => {
         responsive: true,
         plugins: {
           legend: {
-            display: false
+            display: true,
+            position: "bottom",
           }
         },
-        scales: {
-          x: {
-            offset: true
-          },
-          y: {
-            beginAtZero: true,
-            max: 100,
-            title: {
-              display: true,
-              text: "Pourcentage"
-            }
-          }
-        }
+
       }
     });
   }, [data, departementChoisi]);
 
   return (
     <div>
-        <div className="mb-10" style={{ width: "500px" }}>
-            <h2 className="text-2xl font-bold text-center">Répartition de la population par âge (%)</h2>
-            <canvas id="chart1" height="350"></canvas>
-        </div>
+      <div className="mb-10" style={{ width: "500px" }}>
+        <h2 className="text-2xl font-bold text-center">Répartition de la population par âge (%)</h2>
+        <canvas id="chart1" height="350"></canvas>
+      </div>
     </div>
   );
 }

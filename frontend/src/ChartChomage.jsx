@@ -28,9 +28,9 @@ function ChartChomage({ data, departementChoisi }) {
               y: item.tauxPauvrete,
             },
           ],
-          backgroundColor: item.departement.nomDepartement === departementChoisi? "#FF4C4C": "#36A2EB",
+          backgroundColor: item.departement.nomDepartement === departementChoisi ? "#dc2626" : "#fecaca",
           pointRadius: 8,
-          pointBackgroundColor: item.departement.nomDepartement === departementChoisi? "#FF4C4C": "#36A2EB",
+          pointBackgroundColor: item.departement.nomDepartement === departementChoisi ? "#dc2626" : "#fecaca",
         })),
       },
       options: {

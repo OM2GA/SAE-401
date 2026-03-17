@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Apitest from './Apitest';
 import './App.css'
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import Sidebar from './Sidebar';
 import Titre from './Titre';
 import Stats from './stats';
@@ -16,11 +17,29 @@ function App() {
     <>
       <Sidebar onDataChange={setData} onDepartementChange={setDepartementChoisi}>
         <Titre />
-        <Stats />
+        <Stats data={data} />
         <Apitest data={data} />
-        <ChartpopAge data={data} departementChoisi={departementChoisi}/>
-        <ChartChomage data={data} departementChoisi={departementChoisi}/>
-        <ChartDensiteLogement data={data} departementChoisi={departementChoisi}/>
+
+        {departementChoisi === "default" ? (
+          <div className="hero bg-red-100 rounded-2xl mt-10 py-16 border-3 border-dashed border-red-500">
+            <div className="hero-content text-center">
+              <div className="max-w-md">
+                <InformationCircleIcon className="size-16 text-red-500 mx-auto mb-4" />
+                <h2 className="text-2xl font-bold text-red-500">En attente de filtres</h2>
+                <p className="py-4 text-gray-500">
+                  Veuillez sélectionner une année, une région et un département dans le menu latéral pour afficher l'ensemble des statistiques détaillées.
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-10 space-y-12">
+            <ChartpopAge data={data} departementChoisi={departementChoisi} />
+            <ChartChomage data={data} departementChoisi={departementChoisi} />
+            <ChartDensiteLogement data={data} departementChoisi={departementChoisi} />
+          </div>
+        )}
+
       </Sidebar>
     </>
   )

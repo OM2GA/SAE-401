@@ -28,7 +28,7 @@ useEffect(() => {
               logementsSociaux: item.parcSocialNombreLogements
             }
           ],
-          backgroundColor:item.departement.nomDepartement === departementChoisi? "#FF4C4C" : "#36A2EB"}))
+          backgroundColor: item.departement.nomDepartement === departementChoisi ? "rgba(220, 38, 38, 0.9)" : "rgba(252, 165, 165, 0.5)"}))
       },
       options: {
         responsive: true,

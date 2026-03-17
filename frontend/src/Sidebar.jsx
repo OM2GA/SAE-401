@@ -1,4 +1,4 @@
-import { AdjustmentsHorizontalIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { useState, useEffect } from "react";
 import { DataStats } from "./apiCall";
 
@@ -27,7 +27,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
       case "Auvergne-Rhône-Alpes":
         return (
           <>
-            <option value="Ain"className={hoveroption}>Ain (01)</option>
+            <option value="Ain" className={hoveroption}>Ain (01)</option>
             <option value="Allier" className={hoveroption}>Allier (03)</option>
             <option value="Ardèche" className={hoveroption}>Ardèche (07)</option>
             <option value="Cantal" className={hoveroption}>Cantal (15)</option>
@@ -238,7 +238,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
             {/* Année */}
             <fieldset className="fieldset">
               <legend className="fieldset-legend text-gray-600 font-semibold text-sm mb-1">Année</legend>
-              <select className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md" 
+              <select className="select select-bordered w-full bg-gray-100 h-10 text-sm border border-gray-300 hover:border-red-500 rounded-md"
                 value={annee}
                 onChange={(e) => {
                   setAnnee(e.target.value);
@@ -250,7 +250,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
                 <option value="2023" className={hoveroption}>2023</option>
               </select>
             </fieldset>
-            
+
             {/* Région */}
             <fieldset className="fieldset">
               <legend className="fieldset-legend text-gray-600 font-semibold text-sm mb-1">Région</legend>
@@ -259,7 +259,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
                 value={regionChoisi}
                 onChange={(e) => {
                   setRegionChoisi(e.target.value);
-                  setDepartementChoisi('default'); 
+                  setDepartementChoisi('default');
 
                 }}
                 disabled={annee === "default"}
