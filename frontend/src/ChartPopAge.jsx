@@ -24,7 +24,6 @@ function ChartpopAge({ data, departementChoisi }) {
 
     const moins20 = departementData.pourcentagePopMoins20;
     const plus60 = departementData.pourcentagePop60Plus;
-
     const entre20et60 = 100 - moins20 - plus60;
 
     graph.current = new Chart(ctx, {

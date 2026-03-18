@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Apitest from './Apitest';
 import './App.css'
+
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import Sidebar from './Sidebar';
 import Titre from './Titre';
@@ -21,7 +22,7 @@ function App() {
         <Apitest data={data} />
 
         {departementChoisi === "default" ? (
-          <div className="hero bg-red-100 rounded-2xl mt-10 py-16 border-3 border-dashed border-red-500">
+          <div className="hero bg-gray-100 rounded-2xl mt-10 py-16 border-3 border-dashed border-red-500">
             <div className="hero-content text-center">
               <div className="max-w-md">
                 <InformationCircleIcon className="size-16 text-red-500 mx-auto mb-4" />
