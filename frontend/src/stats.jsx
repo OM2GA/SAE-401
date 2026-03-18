@@ -20,9 +20,9 @@ function Stats({ data }) {
     valeurPauvrete = (sommePauvrete / data.length).toFixed(1) + "%";
 
     if (totalPopulation >= 1000000) {
-      valeurPopulation = (totalPopulation / 1000000).toFixed(1) + " M";
+      valeurPopulation = (totalPopulation / 1000000).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + " M";
     } else {
-      valeurPopulation = totalPopulation;
+      valeurPopulation = totalPopulation.toLocaleString('fr-FR');
     }
   }
 
