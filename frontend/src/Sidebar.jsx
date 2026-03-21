@@ -1,6 +1,7 @@
-import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import { AdjustmentsHorizontalIcon,Bars3Icon } from '@heroicons/react/24/outline';
 import { useState, useEffect } from "react";
 import { DataStats } from "./apiCall";
+import logo from "./assets/LogoDataViz.svg";
 
 function Sidebar({ children, onDataChange, onDepartementChange }) {
 
@@ -204,8 +205,8 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
       <div className="drawer-content flex flex-col bg-gray-50">
         {/* Navbar Mobile */}
         <div className="navbar bg-white border-b lg:hidden w-full">
-          <label htmlFor="sidebar-drawer" className="btn btn-square btn-ghost">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <label htmlFor="sidebar-drawer" className="btn btn-square btn-ghost border-none">
+            <Bars3Icon className="h-6 w-6" />
           </label>
           <div className="flex-1 px-2 font-bold text-red-500">DataViz</div>
         </div>
@@ -222,8 +223,12 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
         <div className="flex flex-col w-80 min-h-full bg-white border-r border-gray-200">
 
           {/* Header de la sidebar */}
-          <div className="p-6 border-b border-gray-100">
-            <h1 className="text-3xl font-black text-red-500 italic">
+          <div className="p-6 border-b border-gray-100 flex items-center gap-3">
+            {/* Ton Logo */}
+            <img src={logo} alt="logo" className="h-16 w-16" />
+            
+            {/* Ton Nom */}
+            <h1 className="text-3xl font-black text-red-600 italic tracking-tighter">
               DataViz
             </h1>
           </div>
@@ -260,7 +265,6 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
                 onChange={(e) => {
                   setRegionChoisi(e.target.value);
                   setDepartementChoisi('default');
-
                 }}
                 disabled={annee === "default"}
               >

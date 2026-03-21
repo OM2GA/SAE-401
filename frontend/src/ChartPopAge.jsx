@@ -63,6 +63,7 @@ function ChartpopAge({ data, departementChoisi }) {
       </div>
     </div>
   );
+    
 }
 
 export default ChartpopAge;

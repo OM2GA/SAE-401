@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Apitest from './Apitest';
 import './App.css'
 
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
@@ -9,6 +8,8 @@ import Stats from './stats';
 import ChartpopAge from './ChartPopAge';
 import ChartChomage from './ChartChomage';
 import ChartDensiteLogement from './ChartDensiteLogement';
+import ChartLogements from './ChartLogements';
+import Faq from './Faq';
 
 
 function App() {
@@ -17,10 +18,8 @@ function App() {
   return (
     <>
       <Sidebar onDataChange={setData} onDepartementChange={setDepartementChoisi}>
-        <Titre />
+        <Titre/>
         <Stats data={data} />
-        <Apitest data={data} />
-
         {departementChoisi === "default" ? (
           <div className="hero bg-gray-100 rounded-2xl mt-10 py-16 border-3 border-dashed border-red-500">
             <div className="hero-content text-center">
@@ -38,7 +37,10 @@ function App() {
             <ChartpopAge data={data} departementChoisi={departementChoisi} />
             <ChartChomage data={data} departementChoisi={departementChoisi} />
             <ChartDensiteLogement data={data} departementChoisi={departementChoisi} />
+            <ChartLogements data={data} departementChoisi={departementChoisi} />
+            <Faq />
           </div>
+
         )}
 
       </Sidebar>

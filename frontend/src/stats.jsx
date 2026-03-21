@@ -28,8 +28,8 @@ function Stats({ data }) {
 
   return (
     <div className="space-y-6">
-      <p className="text-gray-500 text-md">Statistique Global</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+      <p className="text-gray-500 text-lg">Statistique Global </p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-20">
         <StatCard title="Taux de chômage" value={valeurChomage} icon={BriefcaseIcon} />
         <StatCard title="Taux de pauvreté" value={valeurPauvrete} icon={ExclamationTriangleIcon} />
         <StatCard title="Population Totale" value={valeurPopulation} icon={UsersIcon} />
