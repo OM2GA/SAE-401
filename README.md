@@ -2,15 +2,16 @@
 
 Création d'un site web en react avec API symfony pour visualiser grâce a des graphique Chart.js des données sur les département francais
 
-## Installation du projet
-
-Une fois le projet téléchargé sur votre ordinateur :
-
 ---
 
 # Prérequis
 
 - PHP 8.5.1
+
+---
+## Installation du projet
+
+Une fois le projet téléchargé sur votre ordinateur :
 
 ---
 
