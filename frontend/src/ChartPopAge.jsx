@@ -60,7 +60,7 @@ function ChartpopAge({ data, departementChoisi }) {
     <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-gray-100">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-1.5 h-6 bg-red-600 rounded-full"></div> 
-        <h2 className="text-xl font-bold text-bold">Répartition de la population par âge (%)</h2>
+        <h2 className="text-xl font-bold text-bold">Répartition de la population par âge (%) - {departementChoisi}</h2>
       </div>
       <div className="h-[350px]">
         <canvas id="chart1"></canvas>
