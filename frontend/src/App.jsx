@@ -14,9 +14,10 @@ import ChartLogements from './ChartLogements';
 function App() {
   const [data, setData] = useState(null);
   const [departementChoisi, setDepartementChoisi] = useState("default");
+  const [regionChoisi, setRegionChoisi] = useState("default");
   return (
     <>
-      <Sidebar onDataChange={setData} onDepartementChange={setDepartementChoisi}>
+      <Sidebar onDataChange={setData} onDepartementChange={setDepartementChoisi} onRegionChange={setRegionChoisi}>
         <Titre/>
         <Stats data={data} />
         {departementChoisi === "default" ? (

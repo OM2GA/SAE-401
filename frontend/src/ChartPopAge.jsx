@@ -34,7 +34,7 @@ function ChartpopAge({ data, departementChoisi }) {
           {
             label: departementChoisi,
             data: [moins20, entre20et60, plus60],
-            backgroundColor: ["#fca5a5", "#ef4444", "#b91c1c"],
+            backgroundColor: ["#fca5a5", "#DC2626", "#b91c1c"],
             borderColor: "#ffffff",
             borderWidth: 2,
             hoverOffset: 4,

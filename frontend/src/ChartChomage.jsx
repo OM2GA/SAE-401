@@ -30,6 +30,7 @@ function ChartChomage({ data, departementChoisi }) {
           ],
           backgroundColor: item.departement.nomDepartement === departementChoisi ? "#dc2626" : "#fecaca",
           pointRadius: 8,
+          pointHoverRadius:10,
           pointBackgroundColor: item.departement.nomDepartement === departementChoisi ? "#dc2626" : "#fecaca",
         })),
       },

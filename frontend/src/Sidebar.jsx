@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { DataStats } from "./apiCall";
 import logo from "./assets/LogoDataViz.svg";
 
-function Sidebar({ children, onDataChange, onDepartementChange }) {
+function Sidebar({ children, onDataChange, onDepartementChange, onRegionChange }) {
 
   const [annee, setAnnee] = useState('default');
   const [regionChoisi, setRegionChoisi] = useState('default');
@@ -216,18 +216,17 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
         </main>
       </div>
 
-      {/*LA SIDEBAR  */}
+      {/*Menu sidebar  */}
       <div className="drawer-side z-40">
         <label htmlFor="sidebar-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
         <div className="flex flex-col w-80 min-h-full bg-white border-r border-gray-200">
 
-          {/* Header de la sidebar */}
+          {/* Header menu */}
           <div className="p-6 border-b border-gray-100 flex items-center gap-3">
-            {/* Ton Logo */}
+
             <img src={logo} alt="logo" className="h-16 w-16" />
             
-            {/* Ton Nom */}
             <h1 className="text-3xl font-black text-red-600 italic tracking-tighter">
               DataViz
             </h1>
@@ -265,6 +264,7 @@ function Sidebar({ children, onDataChange, onDepartementChange }) {
                 onChange={(e) => {
                   setRegionChoisi(e.target.value);
                   setDepartementChoisi('default');
+                  onRegionChange(e.target.value);
                 }}
                 disabled={annee === "default"}
               >
