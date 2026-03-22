@@ -27,7 +27,7 @@ function Stats({ data }) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-2">
       <p className="text-gray-500 text-lg">Statistique Global </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-20">
         <StatCard title="Taux de chômage" value={valeurChomage} icon={BriefcaseIcon} />

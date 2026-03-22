@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import Faq from "./Faq";
+
 
 function ChartLogements({ data, departementChoisi }) {
   const graph = useRef(null);
@@ -50,9 +52,6 @@ function ChartLogements({ data, departementChoisi }) {
             grid: { 
               display: false 
             }, 
-            border: { 
-              display: false 
-            } 
           },
           y: {
             beginAtZero: true,
@@ -81,6 +80,7 @@ function ChartLogements({ data, departementChoisi }) {
       <div className="h-[350px]">
         <canvas id="chartlogements"></canvas>
       </div>
+      <Faq />
     </div>
   );
 }

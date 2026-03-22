@@ -9,7 +9,6 @@ import ChartpopAge from './ChartPopAge';
 import ChartChomage from './ChartChomage';
 import ChartDensiteLogement from './ChartDensiteLogement';
 import ChartLogements from './ChartLogements';
-import Faq from './Faq';
 
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
             <ChartChomage data={data} departementChoisi={departementChoisi} />
             <ChartDensiteLogement data={data} departementChoisi={departementChoisi} />
             <ChartLogements data={data} departementChoisi={departementChoisi} />
-            <Faq />
           </div>
 
         )}

@@ -38,12 +38,13 @@ function ChartpopAge({ data, departementChoisi }) {
             borderColor: "#ffffff",
             borderWidth: 2,
             hoverOffset: 4,
+            borderRadius: 8,
           }
         ]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: true,
@@ -56,9 +57,12 @@ function ChartpopAge({ data, departementChoisi }) {
   }, [data, departementChoisi]);
 
   return (
-    <div className="mb-10">
-      <h2 className="text-2xl font-bold mb-4">Répartition de la population par âge (%)</h2>
-      <div style={{ maxWidth: "300px", maxHeight: "300px", margin: "0 auto" }}>
+    <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-gray-100">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-1.5 h-6 bg-red-600 rounded-full"></div> 
+        <h2 className="text-xl font-bold text-bold">Répartition de la population par âge (%)</h2>
+      </div>
+      <div className="h-[350px]">
         <canvas id="chart1"></canvas>
       </div>
     </div>
