@@ -7,7 +7,7 @@ function Faq() {
       {/* Logement Social */}
       <details className="collapse rounded-none border border-gray-200 group">
         <summary className="collapse-title flex items-center justify-between cursor-pointer list-none p-6 hover:bg-gray-200">
-          <span className="text-lg font-bold text-slate-900 tracking-tight">
+          <span className="text-lg font-bold text-slate-900">
             Qu'est-ce qu'un logement social ?
           </span>
           <ChevronDownIcon className="h-6 w-6 text-red-600 transition-transform duration-500 group-open:rotate-180" />
@@ -24,7 +24,7 @@ function Faq() {
       {/* Logement Vacant */}
       <details className="collapse rounded border border-gray-200 group ">
         <summary className="collapse-title flex items-center justify-between cursor-pointer list-none p-6 hover:bg-gray-200">
-          <span className="text-lg font-bold text-slate-900 tracking-tight">
+          <span className="text-lg font-bold text-slate-900">
             Qu'est-ce qu'un logement vacant ?
           </span>
           <ChevronDownIcon className="h-6 w-6 text-red-600 transition-transform duration-500 group-open:rotate-180" />

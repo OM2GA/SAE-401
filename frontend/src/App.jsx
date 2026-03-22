@@ -41,7 +41,6 @@ function App() {
             <ChartDensiteLogement data={data} departementChoisi={departementChoisi} />
             <ChartLogements data={data} departementChoisi={departementChoisi} />
             <ChartConstruction regionChoisi={regionChoisi} />
-
           </div>
 
         )}
