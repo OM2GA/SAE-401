@@ -23,7 +23,7 @@ function ChartLogements({ data, departementChoisi }) {
             label: "Logements vacants",
             data: data.map((item) => item.tauxLogementsVacants),
             backgroundColor: data.map((item) => item.departement.nomDepartement === departementChoisi ? "#ef4444" : "#fee2e2"),
-            borderRadius: 8, 
+            borderRadius: 8,
           },
           {
             label: "Logements sociaux",
@@ -36,10 +36,10 @@ function ChartLogements({ data, departementChoisi }) {
       options: {
         responsive: true,
         plugins: {
-          legend: { 
+          legend: {
             position: "bottom",
             labels: {
-              generateLabels: function(chart) {
+              generateLabels: function (chart) {
                 const vividColors = ["#ef4444", "#1e40af"];
                 return chart.data.datasets.map((dataset, i) => ({
                   text: dataset.label,
@@ -53,25 +53,25 @@ function ChartLogements({ data, departementChoisi }) {
           },
           tooltip: {
             callbacks: {
-              label: function(context) {
+              label: function (context) {
                 return context.dataset.label + " : " + context.raw + "%";
               }
             }
-          } 
+          }
         },
         scales: {
           x: {
-            grid: { 
-              display: false 
-            }, 
+            grid: {
+              display: false
+            },
           },
           y: {
             beginAtZero: true,
-            grid: { 
+            grid: {
               color: "#f3f4f6"
-             }, 
-            border: { 
-              display: false 
+            },
+            border: {
+              display: false
             },
             title: {
               display: true,
@@ -86,7 +86,7 @@ function ChartLogements({ data, departementChoisi }) {
   return (
     <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-gray-100">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-1.5 h-6 bg-red-600 rounded-full"></div> 
+        <div className="w-1.5 h-6 bg-red-600 rounded-full"></div>
         <h2 className="text-xl font-bold text-bold">Taux de Logements Sociaux et Vacants par Département</h2>
       </div>
       <div className="h-[350px]">
