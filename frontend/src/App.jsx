@@ -20,7 +20,7 @@ function App() {
     <>
       <Sidebar onDataChange={setData} onDepartementChange={setDepartementChoisi} onRegionChange={setRegionChoisi}>
         <Titre/>
-        <Stats data={data} />
+        <Stats data={data} regionChoisi={regionChoisi} />
         {departementChoisi === "default" ? (
           <div className="hero bg-gray-100 rounded-2xl mt-10 py-16 border-3 border-dashed border-red-500">
             <div className="hero-content text-center">
