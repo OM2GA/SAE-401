@@ -37,7 +37,19 @@ function ChartLogements({ data, departementChoisi }) {
         responsive: true,
         plugins: {
           legend: { 
-            position: "bottom" 
+            position: "bottom",
+            labels: {
+              generateLabels: function(chart) {
+                const vividColors = ["#ef4444", "#1e40af"];
+                return chart.data.datasets.map((dataset, i) => ({
+                  text: dataset.label,
+                  fillStyle: vividColors[i],
+                  strokeStyle: vividColors[i],
+                  hidden: !chart.isDatasetVisible(i),
+                  datasetIndex: i
+                }));
+              }
+            }
           },
           tooltip: {
             callbacks: {
