@@ -71,7 +71,7 @@ function ChartConstruction({  regionChoisi }) {
     <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-gray-100">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-1.5 h-6 bg-red-600 rounded-full"></div> 
-        <h2 className="text-xl font-bold text-bold">Evolution de la construction</h2>
+        <h2 className="text-xl font-bold text-bold"> Evolution du nombre de nouvelle construction</h2>
       </div>
       <div className="h-[350px]">
         <canvas id="chartEvolutionConstruction"></canvas>

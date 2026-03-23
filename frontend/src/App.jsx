@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css'
-
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import Sidebar from './Sidebar';
 import Titre from './Titre';
