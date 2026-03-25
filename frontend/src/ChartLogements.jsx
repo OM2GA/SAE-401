@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Faq from "./Faq";
+import Def from "./Def";
 
 
 function ChartLogements({ data, departementChoisi }) {
@@ -94,7 +94,7 @@ function ChartLogements({ data, departementChoisi }) {
       <div className="h-[350px]">
         <canvas id="chartlogements"></canvas>
       </div>
-      <Faq />
+      <Def />
     </div>
   );
 }

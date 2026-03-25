@@ -14,7 +14,7 @@ function StatCard(props) {
         <div className="stat-title text-gray-500 font-medium text-lg">
           {props.title}
         </div>
-        <div className="stat-value text-4xl font-black tracking-tight">
+        <div className="stat-value text-4xl font-black">
           {props.value}
         </div>
       </div>
