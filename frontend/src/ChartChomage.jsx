@@ -42,6 +42,13 @@ function ChartChomage({ data, departementChoisi }) {
             display: false,
           },
           tooltip: {
+              backgroundColor: "white",    
+              bodyColor: "#000000",
+              borderColor: "#ef4444",
+              borderWidth: 1,
+              bodyFont: {
+                size: 14
+              },
             callbacks: {
               label: (context) => {
                 return `${context.dataset.label} - Pauvreté: ${context.parsed.y}%, Chômage: ${context.parsed.x}% `;

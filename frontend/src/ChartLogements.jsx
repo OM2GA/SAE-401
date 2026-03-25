@@ -54,6 +54,18 @@ function ChartLogements({ data, departementChoisi }) {
             }
           },
           tooltip: {
+              backgroundColor: "white",  
+              titleColor: "#ef4444",
+              bodyColor: "#000000",
+              borderColor: "#ef4444",
+              borderWidth: 1,
+              titleFont: {
+                size: 16,
+                weight: "bold"
+              },
+              bodyFont: {
+                size: 14
+              },
             callbacks: {
               label: function (context) {
                 return context.dataset.label + " : " + context.raw + "%";

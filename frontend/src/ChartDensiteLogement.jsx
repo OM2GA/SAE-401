@@ -41,18 +41,12 @@ function ChartDensiteLogement({ data, departementChoisi }) {
             display: false
           },
           tooltip: {
-              backgroundColor: "#1f2937", 
-              titleColor: "#ffffff",      
-              bodyColor: "#d1d5db",       
+              backgroundColor: "white",    
+              bodyColor: "#000000",
               borderColor: "#ef4444",
               borderWidth: 1,
-
-              titleFont: {
-                size: 16,
-                weight: "bold"
-              },
               bodyFont: {
-                size: 13
+                size: 14
               },
             callbacks: {
               label: (context) => {
