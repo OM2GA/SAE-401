@@ -36,22 +36,25 @@ function ChartLogements({ data, departementChoisi }) {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-
         plugins: {
           legend: {
             position: "bottom",
             labels: {
-              generateLabels: function (chart) {
-                const vividColors = ["#ef4444", "#1e40af"];
-                return chart.data.datasets.map((dataset, i) => ({
-                  text: dataset.label,
-                  fillStyle: vividColors[i],
-                  strokeStyle: vividColors[i],
-                  hidden: !chart.isDatasetVisible(i),
-                  datasetIndex: i
-                }));
+                generateLabels: (chart) => {
+                  return [
+                    {
+                      text: "Logements vacants",
+                      fillStyle: "#ef4444", 
+                      datasetIndex: 0
+                    },
+                    {
+                      text: "Logements sociaux",
+                      fillStyle: "#1e40af", 
+                      datasetIndex: 1
+                    }
+                  ];
+                }
               }
-            }
           },
           tooltip: {
               backgroundColor: "white",  
