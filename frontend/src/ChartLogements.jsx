@@ -45,11 +45,13 @@ function ChartLogements({ data, departementChoisi }) {
                     {
                       text: "Logements vacants",
                       fillStyle: "#ef4444", 
+                      strokeStyle: "transparent",
                       datasetIndex: 0
                     },
                     {
                       text: "Logements sociaux",
                       fillStyle: "#1e40af", 
+                      strokeStyle: "transparent",
                       datasetIndex: 1
                     }
                   ];
