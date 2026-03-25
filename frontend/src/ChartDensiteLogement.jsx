@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { FaqItem } from "./Faq";
 
 function ChartDensiteLogement({ data, departementChoisi }) {
   const graph = useRef(null)
@@ -33,6 +34,7 @@ function ChartDensiteLogement({ data, departementChoisi }) {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false
@@ -67,11 +69,20 @@ function ChartDensiteLogement({ data, departementChoisi }) {
   return (
     <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-gray-100">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-1.5 h-6 bg-red-600 rounded-full"></div> 
+        <div className="w-1.5 h-6 bg-red-600 rounded-full"></div>
         <h2 className="text-xl font-bold text-bold">Densité de population et nombre de logements</h2>
       </div>
       <div className="h-[400px] ">
         <canvas id="ChartBubble"></canvas>
+      </div>
+      <div className="space-y-0 border-t border-gray-200">
+        <FaqItem question="Qu'est-ce que la densité de population ?">
+          <p className="text-base leading-relaxed text-gray-600">
+            La <span className="font-bold text-slate-800">densité de population</span> correspond au nombre d'<span className="font-bold text-slate-800">habitants par kilomètre carré</span> (hab/km²).
+            Elle permet de mesurer la <span className="font-bold text-slate-800">concentration de la population</span> sur un territoire donné.
+            Une densité élevée traduit un espace très peuplé, tandis qu'une densité faible caractérise un territoire plus <span className="font-bold text-slate-800">rural</span> ou moins urbanisé.
+          </p>
+        </FaqItem>
       </div>
     </div>
   );

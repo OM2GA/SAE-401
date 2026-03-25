@@ -30,12 +30,13 @@ function ChartChomage({ data, departementChoisi }) {
           ],
           backgroundColor: item.departement.nomDepartement === departementChoisi ? "#dc2626" : "#fecaca",
           pointRadius: 8,
-          pointHoverRadius:10,
+          pointHoverRadius: 10,
           pointBackgroundColor: item.departement.nomDepartement === departementChoisi ? "#dc2626" : "#fecaca",
         })),
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false,
@@ -69,7 +70,7 @@ function ChartChomage({ data, departementChoisi }) {
   return (
     <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-gray-100">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-1.5 h-6 bg-red-600 rounded-full"></div> 
+        <div className="w-1.5 h-6 bg-red-600 rounded-full"></div>
         <h2 className="text-xl font-bold text-bold">Relation entre chômage et pauvreté</h2>
       </div>
       <div className="h-[350px]">
